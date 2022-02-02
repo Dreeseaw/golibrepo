@@ -1,6 +1,6 @@
 package main
 
-// trying to ivdersmvix just xargs falgs
+// onto matrix debugging
 import (
     "C"
 )

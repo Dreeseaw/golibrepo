@@ -19,6 +19,7 @@ jobs:
           export TOBUILD=$( cat projects.txt | xargs -t -I {} -n 1 grep -o -m 1 ^{} tmp.txt )
           echo "$TOBUILD"
           echo "::set-output name=projs::$TOBUILD"
+          echo $( toJSON($TOBUILD) )
   buildchanges:
     runs-on: ubuntu-latest
     needs:
