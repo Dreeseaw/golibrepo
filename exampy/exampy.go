@@ -1,6 +1,6 @@
 package main
 
-// trying to fix xargs & grep flags
+// trying to fix just xargs falgs
 import (
     "C"
 )
