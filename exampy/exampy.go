@@ -1,5 +1,6 @@
 package main
 
+// meaningless comment
 import (
     "C"
 )
