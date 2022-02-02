@@ -1,6 +1,6 @@
 package main
 
-// another lol another meaningless comment
+// omg another lol another meaningless comment
 import (
     "C"
 )
