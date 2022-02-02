@@ -1,6 +1,6 @@
 package main
 
-// trying to fix just xargs falgs
+// trying to ivdersmvix just xargs falgs
 import (
     "C"
 )
