@@ -1,6 +1,6 @@
 package main
 
-// omg another lol another meaningless comment
+// trying to fix xargs flags
 import (
     "C"
 )
