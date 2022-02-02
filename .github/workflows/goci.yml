@@ -15,7 +15,7 @@ jobs:
         run: |
           git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
           git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} >> tmp.txt
-          export TOBUILD=$( cat projects.txt | xargs -I % -L 1 -n grep -o -m 1 ^% tmp.txt )
+          export TOBUILD=$( cat projects.txt | xargs -I % -L 1 -n 1 grep -o -m 1 ^% tmp.txt )
           echo "$TOBUILD"
           echo "::set-output name=projs::$TOBUILD"
   buildchanges:
