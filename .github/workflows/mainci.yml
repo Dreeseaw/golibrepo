@@ -1,4 +1,4 @@
-name: Push To Main CI
+name: Push To Main CI (Test, Build, Deploy, Upload)
 on:
   push:
     branches: 
@@ -16,6 +16,7 @@ jobs:
       - name: Find projects with changes in the pr
         id: changes
         run: |
+          git fetch --depth=1 origin ${{ github.event.before }}
           git diff --name-only ${{ github.event.before }} $GITHUB_SHA >> tmp.txt
           export TOBUILD=$( cat projects.txt | xargs -I {} -n 1 grep -o -m 1 ^{} tmp.txt | jo -a )
           echo "$TOBUILD"
