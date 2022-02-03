@@ -1,7 +1,8 @@
-name: Test, Build & Deploy Changed Go Libs
+name: Push To Main CI
 on:
   push:
-    - branches: 'main'
+    branches: 
+      - 'main'
 jobs:
   findchanges:
     runs-on: ubuntu-latest
