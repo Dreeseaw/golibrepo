@@ -1,5 +1,7 @@
-name: Build, Test, & Deploy Go Libraries
-on: pull_request
+name: Test, Build & Deploy Changed Go Libs
+on:
+  push:
+    - branches: 'main'
 jobs:
   findchanges:
     runs-on: ubuntu-latest
@@ -8,16 +10,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Install apt-get packages
         run: sudo apt-get install -y jo
       - name: Find projects with changes in the pr
         id: changes
         run: |
-          git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
-          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} >> tmp.txt
-          
+          git diff --name-only ${{ github.event.before }} $GITHUB_SHA >> tmp.txt
           export TOBUILD=$( cat projects.txt | xargs -I {} -n 1 grep -o -m 1 ^{} tmp.txt | jo -a )
           echo "$TOBUILD"
           echo "::set-output name=projs::${TOBUILD}"
@@ -41,3 +39,8 @@ jobs:
       - name: Build Go lib
         run: go build -o ${{ matrix.project }}.so -buildmode=c-shared ${{ matrix.project }}.go
         working-directory: ./${{ matrix.project }}
+      - name: Upload .so Artifact
+        uses: actions/upload-artifact@v2
+        with:
+           name: ${{ matrix.project }}_$GITHUB_SHA
+           path: ./${{ matrix.project }}/${{ matrix.project}}.so
