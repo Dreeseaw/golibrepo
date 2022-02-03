@@ -6,7 +6,7 @@ import (
 
 //export examplefunc
 func examplefunc(x, y int) int {
-    return x+y
+    return x-y
 }
 
 func main() {}
