@@ -1,6 +1,5 @@
 package main
 
-// onto matrix debuggin2g
 import (
     "C"
 )
