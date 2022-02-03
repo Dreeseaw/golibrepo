@@ -1,4 +1,4 @@
-name: Build, Test, & Deploy Go Libraries
+name: Pull Request CI (Test)
 on: pull_request
 jobs:
   findchanges:
