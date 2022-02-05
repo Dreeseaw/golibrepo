@@ -52,5 +52,5 @@ jobs:
       - id: upload-file
         uses: google-github-actions/upload-cloud-storage@v0
         with:
-          path: ./${{ matrix.project }}/${{ matrix.project }}.so
-          destination: golibrepo/${{ matrix.project }}_${{ github.event.head_commit.id }}.so
+          path: ${{ matrix.project }}.so
+          destination: golibrepo/${{ github.event.head_commit.id }}
