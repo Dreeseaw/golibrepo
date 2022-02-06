@@ -44,7 +44,7 @@ jobs:
       - name: Build Go lib
         run: |  
           go build -o ${{ matrix.project }}.so -buildmode=c-shared ${{ matrix.project }}.go
-          mv ${{ matrix.project }}.so /usr/lib/.
+          sudo mv ${{ matrix.project }}.so /usr/lib/${{ matrix.project }}.so
         working-directory: ./${{ matrix.project }}
       - id: auth
         uses: google-github-actions/auth@v0
