@@ -38,3 +38,6 @@ jobs:
       - name: Run Go tests
         run: go test ./...
         working-directory: ./${{ matrix.project }}
+      - name: Validate Go Build
+        run: go build -o tmp.so -buildmode=c-shared .
+        working-directory: ./${{ matrix.project }}
